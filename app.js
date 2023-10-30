@@ -15,17 +15,13 @@ const movieRouter = require("./routes/movieRouter");
 const bookmarkRouter = require("./routes/bookmarkRouter");
 const error = require("./middlewares/error");
 
-app.use(
-  cors({
-    origin: [process.env.CLIENT_URL, "http://localhost:5174"],
-  })
-);
+app.use(cors());
 
 // ALLOWS ACCESS TO THE REQ.BODY ON ALL REQUEST (REQ.BODY WOULD BE UNDEFINED WITHOUT THIS )
 app.use(express.json());
 app.use("/api/auth", authRouter);
 app.use("/api/movie", movieRouter);
-app.use("/api/bookmark", bookmarkRouter)
+app.use("/api/bookmark", bookmarkRouter);
 app.use(error);
 
 const start = async () => {
